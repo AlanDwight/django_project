@@ -23,7 +23,7 @@ def register(request):
 
 @login_required
 def profile(request):
-	return render(request, 'Users/profile.html', {'title' : 'Profile'}     )
+	return render(request, 'Users/profile.html', {'title' : 'Profile'})
 
 
 
