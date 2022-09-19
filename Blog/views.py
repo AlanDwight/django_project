@@ -1,12 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin # if you tried to make new post without login you will be redirected to login page 
+from django.contrib.auth.models import User
 from django.views.generic import (
     ListView, 
     DetailView, 
     CreateView,
     UpdateView,
-    DeleteView
+    DeleteView, 
+
 
 )   #list view (class base view)
 
@@ -38,12 +40,24 @@ def home(request):    # we don't use the home function call anymore, we now usin
     return render(request, 'Blog/home.html', context)
 
 
-class PostListView(ListView):   # making listview
+class PostListView(ListView):   # making listview   # aka class view
     model = Post
     template_name = 'Blog/home.html'   # <app>/<model>_<viewtype>.html
     context_object_name = 'posts'  # changing the attribute that class is searching for to 'posts', without that, class will search 'default' list object
     ordering = ['-date_posted']  #  latest to oldest ordering 
+    paginate_by = 4 # two post per page (pagination)
 
+class UserPostListView(ListView):
+    model = Post
+    template_name = 'Blog/user_posts.html'   # <app>/<model>_<viewtype>.html
+    context_object_name = 'posts'  # changing the attribute that class is searching for to 'posts', without that, class will search 'default' list object
+    #ordering = ['-date_posted']  #  latest to oldest ordering 
+    paginate_by = 4 # four posts per page (pagination)
+
+    def get_queryset(self):   # filtering method for the single user's posts   
+        user = get_object_or_404(User, username = self.kwargs.get('username')) # kwargs are query parameter from url  # if user in url exist then store in user var and return user data from 'Post' model else then return 404 error
+        return Post.objects.filter(author = user).order_by('-date_posted')   # reordering the posts of individual user
+ 
 class PostCreateView(LoginRequiredMixin, CreateView):   # 'LoginRequiredMixin' if you tried to make new post without login you will be redirected to login page
     model = Post
     fields = ['title', 'content']
@@ -67,10 +81,10 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):   # '
         return False 
 
     
-class PostDetailView(DetailView):   # making listview
-    model = Post  # Blog/post_detail.html
+class PostDetailView(DetailView):   # making listview   # the individual view for each post 
+    model = Post  # Blog/post_detail.html    # <app>/<model>_<viewtype>.html
 
-class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):   # making listview
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):   # making listview  # func for post deletion and warning 
     model = Post  # Blog/post_detail.html
     success_url = '/'
     def test_func(self):            # checking if the user is the valid for editing the post else deny from updating
