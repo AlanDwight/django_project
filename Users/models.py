@@ -14,8 +14,8 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.user.username} Profile'
 
-    def save(self): # overwrite the save method to reduce image size
-        super().save()          # parents class's save method will run first super() # this save method will run after our model is saved      
+    def save(self,*args, **kwargs): # overwrite the save method to reduce image size
+        super().save(*args, **kwargs)          # parents class's save method will run first super() # this save method will run after our model is saved      
         img = Image.open(self.image.path)  # opening the image of current instance
         if img.height > 300 or img.width > 300 : 
             output_size = (300, 300)    # if h or w  > 300 then resize to 300x300 image
