@@ -33,8 +33,9 @@ urlpatterns = [
 
     # uid64 is user id encoded in base64 and token is user validation for security reason
     path('password-reset-complete/', auth_views.PasswordResetCompleteView.as_view(template_name='Users/password_reset_complete.html'), name='password_reset_complete'),
-    path('', include('Blog.urls')),
+    path('blog/', include('Blog.urls')),
     path('admin/', admin.site.urls),
+    path('', include('Portfolio.urls'))
 ] 
 
 if settings.DEBUG:                              #adding this on urlpattern only if we are in debug mode

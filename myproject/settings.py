@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []  # server address
 INSTALLED_APPS = [
     'Blog.apps.BlogConfig',
     'Users.apps.UsersConfig',
+    'Portfolio.apps.PortfolioConfig',
     'crispy_forms',
     'Contact',
     'Resume',
