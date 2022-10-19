@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-gd&lety0dbz8ltv%+x!r(h9l0lu0!e791o&68kf)o4z6kq(*c(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []  # server address 
+ALLOWED_HOSTS = []  # server address
 
 
 # Application definition
@@ -124,12 +124,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # static dir is handled differently in production 
+# static dir is handled differently in production
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = 'static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #base_fullpath_directory/media/profile_pics/user.jpg
-MEIDA_URL = '/media/'  #handle access by browser url
+# base_fullpath_directory/media/profile_pics/user.jpg
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEIDA_URL = '/media/'  # handle access by browser url
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -139,8 +141,10 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'profile' #redirect to user profile after login #'Blog:blog-home'   #redirect to home
-LOGIN_URL = 'login'                     #redirect for login page when someone try to access profile/ without logging in
+# redirect to user profile after login #'Blog:blog-home'   #redirect to home
+LOGIN_REDIRECT_URL = 'profile'
+# redirect for login page when someone try to access profile/ without logging in
+LOGIN_URL = 'login'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -148,16 +152,22 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 
-EMAIL_HOST_USER = os.environ.get('EMAIL_USER') 
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
 
 # environ var for s3 bucket
 
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID') 
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY') 
-AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME') 
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
-AWS_S3_FILE_OVERWRITE = False  # don't overwrite file when user upload the file with same name
+# don't overwrite file when user upload the file with same name
+AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None  # version error
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# contact form
+
+DEFAULT_FROM_EMAIL = "winkyawphyo78@gmail.com"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
