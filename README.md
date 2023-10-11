@@ -1,4 +1,4 @@
 # django_project
 
 
-Still in early development!
+Still in development!
