@@ -6,7 +6,7 @@ from PIL import Image  #importing PILLOW module
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE) # one to one user and profile relation
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
 
 # dunder str method
@@ -18,7 +18,7 @@ class Profile(models.Model):
     #     super().save(*args, **kwargs)          # parents class's save method will run first super() # this save method will run after our model is saved      
     #     img = Image.open(self.image.path)  # opening the image of current instance
     #     if img.height > 300 or img.width > 300 : 
-    #         output_size = (300, 300)    # if h or w  > 300 then resize to 300x300 image
+    #         output_size = (300, 300)    # if h or w  > 300 then resize to 300x300 image # tuple
     #         img.thumbnail(output_size) # resize 
     #         img.save(self.image.path)  # save to the original path and overwrite the large image
 

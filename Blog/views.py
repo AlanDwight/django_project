@@ -30,8 +30,10 @@ posts = [
         'date_posted': 'August 28'
     } 
 
-    # function view (not class view)(not list view)
 ]
+
+ # function base view (not class view)(not list view)
+
 def home(request):    # we don't use the home function call anymore, we now using the class view
     context = { 
         'posts' : Post.objects.all(),     #getting data from 'Post' model database
@@ -39,8 +41,9 @@ def home(request):    # we don't use the home function call anymore, we now usin
     }
     return render(request, 'Blog/home.html', context)
 
+ # making listview   # aka class base view
 
-class PostListView(ListView):   # making listview   # aka class view
+class PostListView(ListView):
     model = Post
     template_name = 'Blog/home.html'   # <app>/<model>_<viewtype>.html
     context_object_name = 'posts'  # changing the attribute that class is searching for to 'posts', without that, class will search 'default' list object
@@ -58,9 +61,12 @@ class UserPostListView(ListView):
         user = get_object_or_404(User, username = self.kwargs.get('username')) # kwargs are query parameter from url  # if user in url exist then store in user var and return user data from 'Post' model else then return 404 error
         return Post.objects.filter(author = user).order_by('-date_posted')   # reordering the posts of individual user
  
+ # class base view can't be used with decorator
+
 class PostCreateView(LoginRequiredMixin, CreateView):   # 'LoginRequiredMixin' if you tried to make new post without login you will be redirected to login page
     model = Post
     fields = ['title', 'content']
+    #success_url = 'Blog/home.html' #landing on the home page instead of detail view of post by get_absolute_url
 
     def form_valid(self, form): 
         form.instance.author = self.request.user   # set instance to current log in user
@@ -74,7 +80,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):   # '
         form.instance.author = self.request.user   # set instance to current log in user
         return super().form_valid(form)  # overwriting the parent method
 
-    def test_func(self):            # checking if the user is the valid for editing the post else deny from updating
+    def test_func(self):    #require funtion for UserPassesTestMixin # checking if the user is the valid for editing the post else deny from updating
         post = self.get_object()    # getting current post's user instance object
         if self.request.user == post.author: # comparing request user instance and post user instance if true allow update else deny
             return True 
@@ -86,12 +92,14 @@ class PostDetailView(DetailView):   # making listview   # the individual view fo
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):   # making listview  # func for post deletion and warning 
     model = Post  # Blog/post_detail.html
-    success_url = '/'
+    success_url = '/blog/'
     def test_func(self):            # checking if the user is the valid for editing the post else deny from updating
         post = self.get_object()    # getting current post's user instance object
         if self.request.user == post.author: # comparing request user instance and post user instance if true allow update else deny
             return True 
         return False
+
+# funtion base view 
 
 def about(request):
     return render(request, 'Blog/about.html', {'title': 'About'})

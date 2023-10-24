@@ -21,6 +21,8 @@ def register(request):
 		form = UserRegisterForm()
 	return render(request, 'Users/register.html', {'form': form, 'title': 'User Registration'})
 
+# funtion base view can be used with decorators 
+
 @login_required
 def profile(request): 
 	if request.method == 'POST':   

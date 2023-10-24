@@ -36,7 +36,9 @@ urlpatterns = [
     path('blog/', include('Blog.urls')),
     path('admin', admin.site.urls),
     path('', include('Portfolio.urls'))
-] 
+] # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
+
+  # for production read https://docs.djangoproject.com/en/4.2/howto/static-files/deployment/
 
 if settings.DEBUG:                              #adding this on urlpattern only if we are in debug mode
     urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
