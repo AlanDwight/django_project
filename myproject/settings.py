@@ -12,7 +12,13 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+import json
 
+# only uncomment when in production
+
+#with open('/etc/config.json') as config_file: 
+#    config = json.load(config_file)
+ 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,7 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+
 SECRET_KEY = 'django-insecure-gd&lety0dbz8ltv%+x!r(h9l0lu0!e791o&68kf)o4z6kq(*c('
+#SECRET_KEY = config['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -156,11 +164,22 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
 
+# LOADING var from config.json in production 
+
+#EMAIL_HOST_USER = config.get('EMAIL_USER')
+#EMAIL_HOST_PASSWORD = config.get('EMAIL_PASSWORD')
+
+
 # environ var for s3 bucket
 
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+
+#AWS_ACCESS_KEY_ID = config.get('AWS_ACCESS_KEY_ID')
+#AWS_SECRET_ACCESS_KEY = config.get('AWS_SECRET_ACCESS_KEY')
+#AWS_STORAGE_BUCKET_NAME = config.get('AWS_STORAGE_BUCKET_NAME')
+
 
 # don't overwrite file when user upload the file with same name
 AWS_S3_FILE_OVERWRITE = False
