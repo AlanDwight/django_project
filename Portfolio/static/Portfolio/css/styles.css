@@ -210,10 +210,10 @@ section {
 .header-content .left-header .image2 {
   position: absolute;
   z-index: -1;
-  scale: 40%;
+  scale:120%;
   opacity: 35%;
-  margin-left: 67rem;
-  margin-bottom: 34rem;
+  margin-left: 20rem;
+  margin-bottom: 9rem;
 }
 .header-content .left-header .image {
   border-radius: var(--br-sm-2);
@@ -735,6 +735,15 @@ section {
   transform: translate(-50%, -50%);
   font-weight: 800;
   font-size: 2rem;
+}
+
+p {
+  padding: 10px;
+  width: 95%;
+  margin: 10px auto;
+  text-align: justify;
+  text-justify: inter-word;
+
 }
 
 @media screen and (max-width: 600px) {

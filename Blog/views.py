@@ -10,7 +10,9 @@ from django.views.generic import (
     DeleteView, 
 
 
-)   #list view (class base view)
+)   
+
+#list view (class base view)
 
 from .models import Post
  
@@ -32,7 +34,7 @@ posts = [
 
 ]
 
- # function base view (not class view)(not list view)
+ # function base view (not class base view)(not list view)
 
 def home(request):    # we don't use the home function call anymore, we now using the class view
     context = { 

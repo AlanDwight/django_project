@@ -21,7 +21,7 @@ def register(request):
 		form = UserRegisterForm()
 	return render(request, 'Users/register.html', {'form': form, 'title': 'User Registration'})
 
-# funtion base view can be used with decorators 
+# only funtion base view can be used with decorators not class base view
 
 @login_required
 def profile(request): 

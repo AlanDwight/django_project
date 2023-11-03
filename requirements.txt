@@ -13,6 +13,7 @@ django-storages==1.14.2
 fabio==2023.6.0
 fonttools==4.43.1
 greenlet==3.0.0
+gunicorn==21.2.0
 h5py==3.10.0
 jmespath==1.0.1
 kiwisolver==1.4.5
