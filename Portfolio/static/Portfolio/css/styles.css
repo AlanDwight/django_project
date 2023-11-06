@@ -356,13 +356,13 @@ section {
   width: 30%;
 }
 .about-stats .progress-bars .progress-bar .progress-con .progress .css {
-  width: 60%;
+  width: 85%;
 }
 .about-stats .progress-bars .progress-bar .progress-con .progress .django {
   width: 85%;
 }
 .about-stats .progress-bars .progress-bar .progress-con .progress .flask {
-  width: 10%;
+  width: 90%;
 }
 
 .stat-title {
