@@ -104,14 +104,6 @@ section {
   display: block;
   animation: scaleAnim 1s ease-in-out;
 }
-@-webkit-keyframes scaleAnim {
-  0% {
-    transform: translateY(-100%) scaleY(0);
-  }
-  100% {
-    transform: translateY(0) scaleY(1);
-  }
-}
 @keyframes scaleAnim {
   0% {
     transform: translateY(-100%) scaleY(0);
@@ -713,9 +705,6 @@ section {
 }
 
 p {
-  padding: 10px;
-  width: 95%;
-  margin: 10px auto;
   text-align: justify;
   text-justify: inter-word;
 }
