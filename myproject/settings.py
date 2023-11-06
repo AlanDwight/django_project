@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os
 import json
+#import django_heroku
 
 # only uncomment when in production
 
@@ -30,12 +31,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-gd&lety0dbz8ltv%+x!r(h9l0lu0!e791o&68kf)o4z6kq(*c('
 #SECRET_KEY = config['SECRET_KEY']
+#SECRET_KEY = os.environ.get('SECRET_KEY') # only enable when deploying with heroku
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True 
+
+# environ var always return string so we use if statement to convert string "True" to boolean "True" # only at production 
+# DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 
 ALLOWED_HOSTS = []  # server address
-# ALLOWED_HOSTS = ['www.mydomainname.com', '192.168.1.1']
+# ALLOWED_HOSTS = ['www.mydomainname.com', '192.168.1.1', 'mydomain.herokuapp.com']
 
 
 # Application definition
@@ -136,8 +141,10 @@ USE_TZ = True
 
 # static dir is handled differently in production
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
 STATIC_URL = 'static/'
+
+#heroku deployment
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # base_fullpath_directory/media/profile_pics/user.jpg
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -192,3 +199,5 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 DEFAULT_FROM_EMAIL = "winkyawphyo78@gmail.com"
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+#django_heroku.settings(locals()) #automatic heroku configuration 
