@@ -40,7 +40,7 @@ DEBUG = True
 # DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 
 ALLOWED_HOSTS = []  # server address
-# ALLOWED_HOSTS = ['www.mydomainname.com', '192.168.1.1', 'mydomain.herokuapp.com']
+# ALLOWED_HOSTS = ['www.mydomainname.com', '192.168.1.1', 'mydomain.herokuapp.com', 'AlanDwight.pythonanywhere.com']
 
 
 # Application definition
