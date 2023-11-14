@@ -201,3 +201,4 @@ DEFAULT_FROM_EMAIL = "winkyawphyo78@gmail.com"
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 #django_heroku.settings(locals()) #automatic heroku configuration 
+#adding
