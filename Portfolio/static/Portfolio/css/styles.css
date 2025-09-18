@@ -347,13 +347,13 @@ section {
   width: 60%;
 }
 .about-stats .progress-bars .progress-bar .progress-con .progress .C_plus_plus {
-  width: 50%;
+  width: 90%;
 }
 .about-stats .progress-bars .progress-bar .progress-con .progress .python {
   width: 80%;
 }
 .about-stats .progress-bars .progress-bar .progress-con .progress .java {
-  width: 30%;
+  width: 80%;
 }
 .about-stats .progress-bars .progress-bar .progress-con .progress .css {
   width: 85%;
@@ -705,7 +705,7 @@ section {
 }
 
 p {
-  text-align: justify;
+  text-align: left;
   text-justify: inter-word;
 }
 
@@ -886,10 +886,16 @@ p {
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
-    background-color: var(--color-grey-5);
+    /*background-color: var(--color-grey-5);*/
+    background: rgba(135, 206, 235, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
   }
   .controls .control {
-    margin: 0.6rem 1rem;
+    margin: 0.6rem 0.5rem;
   }
   .header-content .left-header .image {
     margin-top: 2.5rem;
@@ -900,3 +906,9 @@ p {
     grid-template-columns: 1fr;
   }
 }/*# sourceMappingURL=styles.css.map */
+
+@media screen and (max-width: 530px){
+    .contact-item {
+        display: block !important;
+    }
+}

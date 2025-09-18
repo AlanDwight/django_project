@@ -17,9 +17,9 @@ import json
 
 # only uncomment when in production
 
-#with open('/etc/config.json') as config_file: 
+#with open('/etc/config.json') as config_file:
 #    config = json.load(config_file)
- 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -34,12 +34,12 @@ SECRET_KEY = 'django-insecure-gd&lety0dbz8ltv%+x!r(h9l0lu0!e791o&68kf)o4z6kq(*c(
 #SECRET_KEY = os.environ.get('SECRET_KEY') # only enable when deploying with heroku
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True 
+DEBUG = True
 
-# environ var always return string so we use if statement to convert string "True" to boolean "True" # only at production 
+# environ var always return string so we use if statement to convert string "True" to boolean "True" # only at production
 # DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 
-ALLOWED_HOSTS = []  # server address
+ALLOWED_HOSTS = ['AlanDwight.pythonanywhere.com']  # server address
 # ALLOWED_HOSTS = ['www.mydomainname.com', '192.168.1.1', 'mydomain.herokuapp.com', 'AlanDwight.pythonanywhere.com']
 
 
@@ -172,7 +172,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
 
-# LOADING var from config.json in production 
+# LOADING var from config.json in production
 
 #EMAIL_HOST_USER = config.get('EMAIL_USER')
 #EMAIL_HOST_PASSWORD = config.get('EMAIL_PASSWORD')
@@ -193,12 +193,12 @@ AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None  # version error
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # contact form
 
 DEFAULT_FROM_EMAIL = "winkyawphyo78@gmail.com"
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-#django_heroku.settings(locals()) #automatic heroku configuration 
+#django_heroku.settings(locals()) #automatic heroku configuration
 #adding

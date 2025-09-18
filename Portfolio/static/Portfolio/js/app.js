@@ -38,3 +38,9 @@ function PageTransitions() {
 }
 
 PageTransitions();
+
+document.querySelectorAll('.access_denied').forEach((item)=>{
+    item.addEventListener('click', ()=> {
+        alert("Access Denied! \nContact winkyawphyo78@gmail.com for further inquiries");
+    })
+})
